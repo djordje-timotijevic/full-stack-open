@@ -1,30 +1,18 @@
-```mermaid
 sequenceDiagram
     participant browser
     participant server
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    
-    server-->>browser: 302
-    
+    server-->>browser: 302 status code - Instruct redirect to /exampleapp/notes
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
-    activate server
-    server-->>browser: HTML file
-    deactivate server
+    server-->>browser: Return HTML file
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: CSS file
-    deactivate server
+    server-->>browser: Return CSS file
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
-    activate server
-    server-->>browser: JavaScript file
-    deactivate server
+    server-->>browser: Return JavaScript file
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: JSON data
-    deactivate server
-```
+    server-->>browser: Return JSON data
