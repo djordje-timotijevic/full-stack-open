@@ -1,7 +1,14 @@
 const express = require('express')
+const morgan = require('morgan')
 const app = express()
 
+const unknownEndpoint = (request, response) => {
+    response.status(404).send({ error: 'Unknown endpoint' })
+}
+
 app.use(express.json())
+app.use(unknownEndpoint)
+app.use(morgan('tiny'))
 
 let notes = [
     {
