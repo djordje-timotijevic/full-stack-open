@@ -79,7 +79,7 @@ const App = () => {
             setFilteredPersons(updatedList)
           })
           .catch(() => {
-            const updatedList = persons.filter((person) => person.name != newName)
+            const updatedList = persons.filter((person) => person.name !== newName)
             setPersons(updatedList)
             setFilteredPersons(updatedList)
             setError('Error entry does not exist on server!')
