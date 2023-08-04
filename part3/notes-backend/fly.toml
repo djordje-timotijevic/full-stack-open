@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for little-darkness-1565 on 2023-07-29T21:35:32+02:00
+# fly.toml app configuration file generated for little-darkness-1565 on 2023-08-01T16:14:49+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -10,7 +10,7 @@ primary_region = "otp"
   PORT = "8080"
 
 [http_service]
-  internal_port = 8080 
+  internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true

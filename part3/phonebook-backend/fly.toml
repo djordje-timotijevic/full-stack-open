@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for broken-violet-2281 on 2023-07-30T16:03:17+02:00
+# fly.toml app configuration file generated for little-darkness-1565 on 2023-08-01T16:14:49+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "broken-violet-2281"
+app = "little-darkness-1565"
 primary_region = "otp"
 
 [env]

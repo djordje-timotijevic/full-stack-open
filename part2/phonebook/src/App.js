@@ -56,7 +56,7 @@ const App = () => {
 
   const addData = (event) => {
     event.preventDefault()
-    
+
     const newNumberObject = {
       name: newName,
       number: newNumber
@@ -70,9 +70,10 @@ const App = () => {
         phoneBookService
           .update(entry.id, newNumberObject)
           .then(newEntry => {
-            console.log(newEntry, 'new entry');
             let updatedList = persons.map(person => {
-              if (person.name === newName) person.number = newEntry.number
+              if (person.name === newName) {
+                person.number = newEntry.number
+              }
               return person
             })
             setPersons(updatedList)
@@ -100,11 +101,17 @@ const App = () => {
         setPersons(persons.concat(newNumber))
         setFilteredPersons(persons.concat(newNumber))
       })
+      .catch(error => {
+        setNotification(error.response.data.error)
+        setTimeout(() => {
+          setNotification(null)
+        }, 3000)
+      })
 
     setNotification(`Added ${newName}`)
     setTimeout(() => {
       setNotification(null)
-    }, 3000);
+    }, 3000)
 
     clearEntryFields()
   }
@@ -128,7 +135,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <Notification text={notification} />
       <Error text={error} />
-      <Filter 
+      <Filter
         value={filter}
         onChange={handelFilterChange}
       />
