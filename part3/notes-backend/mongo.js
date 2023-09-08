@@ -6,38 +6,38 @@ if (process.argv.length < 3) {
 }
 
 const password = process.argv[2]
-const name = process.argv[3]
-const number = process.argv[4]
+const content = process.argv[3]
+const important = process.argv[4]
 
 const url =
-    `mongodb+srv://admin:${password}@fullstackopen.pltibcy.mongodb.net/phonebookApp?
+    `mongodb+srv://admin:${password}@fullstackopen.pltibcy.mongodb.net/noteApp?
     retryWrites=true&w=majority`
 
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
 
-const personSchema = new mongoose.Schema({
-    name: String,
-    number: String,
+const noteSchema = new mongoose.Schema({
+    content: String,
+    important: Boolean,
 })
 
-const Person = mongoose.model('Person', personSchema)
+const Note = mongoose.model('Note', noteSchema)
 
-const person = new Person({
-    name: name,
-    number: number,
+const person = new Note({
+    content: content,
+    important: important,
 })
 
 if (process.argv.length === 3) {
-    Person.find({}).then(result => {
-        result.forEach(person => {
-            console.log(person)
+    Note.find({}).then(result => {
+        result.forEach(note => {
+            console.log(note)
         })
         mongoose.connection.close()
     })
 }
 
 person.save().then(result => {
-    console.log(`added ${name} number ${number} to phonebook`)
+    console.log(`added ${content} with important: ${important} to note database`)
     mongoose.connection.close()
 })

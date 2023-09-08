@@ -84,7 +84,7 @@ const App = () => {
             setPersons(updatedList)
             setFilteredPersons(updatedList)
             setError('Error entry does not exist on server!')
-            setTimeout(() => { setError(null) }, 3000);
+            setTimeout(() => { setError(null) }, 3000)
             clearEntryFields()
           })
         return 0
@@ -126,7 +126,7 @@ const App = () => {
       setNotification('Entry removed successfully')
       setTimeout(() => {
         setNotification(null)
-      }, 3000);
+      }, 3000)
     }
   }
 
